@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নবীন ডিজিটাল - ক্রিয়েটিভ এজেন্সি ও পোর্টফোলিও</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Hind Siliguri for clean Bengali typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Hind Siliguri"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- নেভিগেশন বার (Sticky Navbar) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- লোগো -->
+                <a href="#home" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+                        ন
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+                        নবীন<span class="font-light text-slate-700 dark:text-slate-300">ডিজিটাল</span>
+                    </span>
+                </a>
+
+                <!-- ডেস্কটপ মেনু -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-base font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">হোম</a>
+                    <a href="#services" class="text-base font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">সার্ভিসসমূহ</a>
+                    <a href="#portfolio" class="text-base font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">প্রজেক্টস</a>
+                    <a href="#about" class="text-base font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">আমাদের সম্পর্কে</a>
+                </nav>
+
+                <!-- ডার্ক মোড টগল ও কন্টাক্ট বাটন -->
+                <div class="flex items-center gap-3">
+                    <!-- থিম টগল বাটন -->
+                    <button id="theme-toggle" aria-label="থিম পরিবর্তন করুন" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-amber-400 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+                    </button>
+
+                    <!-- কন্টাক্ট বাটন (ডেস্কটপ) -->
+                    <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-xl shadow-md shadow-indigo-500/25 hover:shadow-lg hover:shadow-indigo-500/40 transition-all">
+                        যোগাযোগ করুন
+                    </a>
+
+                    <!-- মোবাইল মেনু বাটন -->
+                    <button id="mobile-menu-btn" aria-label="মেনু খুলুন" class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- মোবাইল ড্রপডাউন মেনু -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#home" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600">হোম</a>
+            <a href="#services" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600">সার্ভিসসমূহ</a>
+            <a href="#portfolio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600">প্রজেক্টস</a>
+            <a href="#about" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600">আমাদের সম্পর্কে</a>
+            <a href="#contact" class="mobile-link block text-center mt-4 px-4 py-3 rounded-xl text-base font-semibold text-white bg-indigo-600 hover:bg-indigo-700">যোগাযোগ করুন</a>
+        </div>
+    </header>
+
+    <!-- হিরো সেকশন (Hero Section) -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden">
+        <!-- ব্যাকগ্রাউন্ড ডেকোরেশন ব্লব -->
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 dark:from-indigo-500/10 dark:to-purple-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- ছোট ব্যাজ -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-8 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse"></span>
+                আধুনিক ডিজিটাল সলিউশন ও ক্রিয়েটিভ ডিজাইন
+            </div>
+
+            <!-- প্রধান শিরোনাম -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight max-w-4xl mx-auto mb-6">
+                আপনার স্বপ্নের প্রজেক্টকে দিন <br class="hidden sm:inline">
+                <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+                    আধুনিক ও নান্দনিক রূপ
+                </span>
+            </h1>
+
+            <!-- সাব-টাইটেল -->
+            <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                আমরা তৈরি করি দৃষ্টিনন্দন ওয়েবসাইট, ইউজার-ফ্রেন্ডলি অ্যাপ এবং শক্তিশালী ব্র্যান্ড আইডেন্টিটি—যা আপনার ব্যবসাকে প্রতিযোগিতায় সবার চেয়ে এগিয়ে রাখবে।
+            </p>
+
+            <!-- অ্যাকশন বাটনসমূহ -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-2xl shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <span>আমাদের কাজ দেখুন</span>
+                    <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700 rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-paper-plane text-indigo-600 dark:text-indigo-400"></i>
+                    <span>আলোচনা শুরু করুন</span>
+                </a>
+            </div>
+
+            <!-- পরিসংখ্যান (Stats Bar) -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-slate-200/60 dark:border-slate-800/60 shadow-xl shadow-slate-200/40 dark:shadow-none">
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-bold text-indigo-600 dark:text-indigo-400">১২০+</div>
+                    <div class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">সফল প্রজেক্ট</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-bold text-purple-600 dark:text-purple-400">৯৮%</div>
+                    <div class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">সন্তুষ্ট ক্লায়েন্ট</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-bold text-pink-600 dark:text-pink-400">৫+ বছর</div>
+                    <div class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">কাজের অভিজ্ঞতা</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-bold text-emerald-600 dark:text-emerald-400">২৪/৭</div>
+                    <div class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">কাস্টমার সাপোর্ট</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- সার্ভিস সেকশন (Services Section) -->
+    <section id="services" class="py-20 lg:py-28 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-sm">আমাদের দক্ষতা</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2 mb-4">যেসব সেবা আমরা প্রদান করি</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-lg">আধুনিক প্রযুক্তি এবং সৃজনশীল চিন্তার সমন্বয়ে আমরা আপনার ব্যবসার জন্য সেরা সমাধান তৈরি করি।</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- সার্ভিস কার্ড ১ -->
+                <div class="group p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">UI/UX ও ওয়েব ডিজাইন</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        ব্যবহারকারীদের জন্য সহজবোধ্য, আকর্ষণীয় এবং আধুনিক ইন্টারফেস ডিজাইন যা ভিজিটরদের মুগ্ধ করে।
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 group-hover:gap-2 transition-all">
+                        বিস্তারিত জানুন <i class="fas fa-chevron-right text-xs ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- সার্ভিস কার্ড ২ -->
+                <div class="group p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-purple-500/50 dark:hover:border-purple-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">ফুল-স্ট্যাক ডেভেলপমেন্ট</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        দ্রুতগতির, নিরাপদ এবং যেকোনো ডিভাইসে রেসপন্সিভ ওয়েব অ্যাপ্লিকেশন ও ই-কমার্স সাইট তৈরি।
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold text-purple-600 dark:text-purple-400 group-hover:gap-2 transition-all">
+                        বিস্তারিত জানুন <i class="fas fa-chevron-right text-xs ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- সার্ভিস কার্ড ৩ -->
+                <div class="group p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-pink-500/50 dark:hover:border-pink-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-100 dark:bg-pink-950/80 text-pink-600 dark:text-pink-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-pink-600 group-hover:text-white transition-all">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">ব্র্যান্ডিং ও ডিজিটাল মার্কেটিং</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        সার্চ ইঞ্জিন অপ্টিমাইজেশন (SEO) এবং সোশ্যাল মিডিয়া কৌশলের মাধ্যমে আপনার ব্যবসার প্রসার।
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold text-pink-600 dark:text-pink-400 group-hover:gap-2 transition-all">
+                        বিস্তারিত জানুন <i class="fas fa-chevron-right text-xs ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- প্রজেক্ট শোকেস সেকশন (Portfolio Showcase) -->
+    <section id="portfolio" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-sm">পোর্টফোলিও</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">সাম্প্রতিক নির্বাচিত প্রজেক্টসমূহ</h2>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 max-w-md">
+                    আমাদের তৈরি করা কিছু উল্লেখযোগ্য ওয়েবসাইট এবং ডিজিটাল প্রোডাক্টের ঝলক নিচে তুলে ধরা হলো।
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- প্রজেক্ট ১ -->
+                <div class="group rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-indigo-500 to-blue-600">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x500/4f46e5/ffffff?text=E-Commerce+Platform'"
+                             alt="ই-কমার্স ওয়েবসাইট" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 text-xs font-semibold bg-white/90 dark:bg-slate-900/90 text-indigo-600 dark:text-indigo-400 rounded-full backdrop-blur-sm">
+                                ই-কমার্স
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">স্মার্টশপ বাংলাদেশ</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            আধুনিক পেমেন্ট গেটওয়ে এবং ইনভেন্টরি ম্যানেজমেন্টসহ একটি সম্পূর্ণ অনলাইন শপিং প্ল্যাটফর্ম।
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">React</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Tailwind</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- প্রজেক্ট ২ -->
+                <div class="group rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-purple-500 to-pink-600">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x500/9333ea/ffffff?text=Analytics+Dashboard'"
+                             alt="ফিনটেক ড্যাশবোর্ড" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 text-xs font-semibold bg-white/90 dark:bg-slate-900/90 text-purple-600 dark:text-purple-400 rounded-full backdrop-blur-sm">
+                                ওয়েব অ্যাপ
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">ফিনট্র্যাক ড্যাশবোর্ড</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            ব্যবসার আয়-ব্যয় ও ডেটা বিশ্লেষণের জন্য রিয়েল-টাইম চার্ট ও রিপোর্টিং সিস্টেম।
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">UI/UX</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Vue.js</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Chart.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- প্রজেক্ট ৩ -->
+                <div class="group rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-emerald-500 to-teal-600">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x500/10b981/ffffff?text=EdTech+Portal'"
+                             alt="এডুটেক প্ল্যাটফর্ম" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 text-xs font-semibold bg-white/90 dark:bg-slate-900/90 text-emerald-600 dark:text-emerald-400 rounded-full backdrop-blur-sm">
+                                এডুটেক
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">শিখুন অনলাইন একাডেমি</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            শিক্ষার্থীদের জন্য ইন্টারঅ্যাক্টিভ ভিডিও কোর্স, কুইজ এবং লাইভ ক্লাস ম্যানেজমেন্ট পোর্টাল।
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Next.js</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Firebase</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- আমাদের সম্পর্কে সেকশন (About Section) -->
+    <section id="about" class="py-20 lg:py-28 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- বাম পাশের ছবি ও ব্যাজ -->
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80" 
+                             onerror="this.src='https://placehold.co/900x700/312e81/ffffff?text=Creative+Team'"
+                             alt="আমাদের টিম" 
+                             class="w-full h-auto object-cover">
+                    </div>
+                    <!-- ফ্লোটিং কার্ড -->
+                    <div class="hidden sm:flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-slate-800 shadow-xl border border-slate-100 dark:border-slate-700 absolute -bottom-6 -right-6">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900 dark:text-white text-lg">মানসম্মত কাজ</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">১০০% সময়মতো ডেলিভারি</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ডান পাশের টেক্সট -->
+                <div>
+                    <span class="text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-sm">আমাদের সম্পর্কে</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2 mb-6 leading-snug">
+                        সৃজনশীলতা ও প্রযুক্তির মেলবন্ধনে আমরা গড়ি ডিজিটাল ভবিষ্যৎ
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
+                        নবীন ডিজিটাল একটি আধুনিক ক্রিয়েটিভ এজেন্সি। আমাদের লক্ষ্য হলো দেশি ও বিদেশি উদ্যোক্তাদের জন্য এমন ওয়েবসাইট ও ডিজিটাল পণ্য তৈরি করা, যা দেখতে যেমন সুন্দর, ব্যবহারেও তেমন সহজ।
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xs mt-1 shrink-0">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="text-slate-700 dark:text-slate-300">প্রতিটি প্রজেক্টে ইউজার এক্সপেরিয়েন্স (UX) এবং স্পিডকে সর্বোচ্চ গুরুত্ব দেওয়া হয়।</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xs mt-1 shrink-0">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="text-slate-700 dark:text-slate-300">মোবাইল, ট্যাবলেট এবং ডেস্কটপ—সব স্ক্রিনের জন্য ১০০% উপযোগী ডিজাইন।</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xs mt-1 shrink-0">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="text-slate-700 dark:text-slate-300">প্রজেক্ট পরবর্তী যেকোনো প্রযুক্তিগত সহায়তা ও রক্ষণাবেক্ষণ সুবিধা।</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-slate-900 dark:bg-indigo-600 hover:bg-slate-800 dark:hover:bg-indigo-700 rounded-xl transition-colors">
+                        আমাদের সাথে যুক্ত হোন <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- যোগাযোগ সেকশন (Interactive Contact Form) -->
+    <section id="contact" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-2xl overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-5">
+                    
+                    <!-- বাম পাশের কন্টাক্ট ইনফো কার্ড -->
+                    <div class="lg:col-span-2 p-8 sm:p-10 bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 text-white flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">চলুন একসাথে দারুণ কিছু তৈরি করি!</h3>
+                            <p class="text-indigo-100 leading-relaxed mb-8">
+                                আপনার কোনো প্রজেক্ট আইডিয়া থাকলে বা আমাদের সার্ভিস সম্পর্কে জানতে চাইলে নিচের ফর্মটি পূরণ করুন। আমরা দ্রুত আপনার সাথে যোগাযোগ করব।
+                            </p>
+
+                            <div class="space-y-5">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-indigo-200">ফোন করুন</div>
+                                        <div class="font-medium">+৮৮০ ১৭০০-০০০০০০</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-indigo-200">ইমেইল পাঠান</div>
+                                        <div class="font-medium">hello@nabeendigital.com</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-indigo-200">ঠিকানা</div>
+                                        <div class="font-medium">বনানী, ঢাকা-১২১৩, বাংলাদেশ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- সোশ্যাল মিডিয়া লিংক -->
+                        <div class="mt-12 pt-6 border-t border-white/15 flex items-center gap-4">
+                            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ডান পাশের ফর্ম -->
+                    <div class="lg:col-span-3 p-8 sm:p-10">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">বার্তা পাঠান</h3>
+                        
+                        <form id="contact-form" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">আপনার নাম *</label>
+                                    <input type="text" id="name" required placeholder="যেমন: তানভীর আহমেদ"
+                                           class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">ইমেইল ঠিকানা *</label>
+                                    <input type="email" id="email" required placeholder="example@mail.com"
+                                           class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">কোন সার্ভিসটি প্রয়োজন?</label>
+                                <select id="service"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                                    <option value="ওয়েব ডিজাইন">UI/UX ও ওয়েব ডিজাইন</option>
+                                    <option value="ওয়েব ডেভেলপমেন্ট">ওয়েব ডেভেলপমেন্ট</option>
+                                    <option value="ই-কমার্স">ই-কমার্স ওয়েবসাইট</option>
+                                    <option value="অন্যান্য">অন্যান্য পরামর্শ</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">আপনার বার্তা *</label>
+                                <textarea id="message" rows="4" required placeholder="আপনার প্রজেক্ট সম্পর্কে সংক্ষেপে লিখুন..."
+                                          class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" id="submit-btn"
+                                    class="w-full py-3.5 px-6 text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                                <span>বার্তা পাঠিয়ে দিন</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+
+                        <!-- ইনস্ট্যান্ট ফিডব্যাক মেসেজ বক্স (alert() এর পরিবর্তে) -->
+                        <div id="form-feedback" class="hidden mt-5 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 flex items-start gap-3">
+                            <i class="fas fa-check-circle text-xl text-emerald-600 dark:text-emerald-400 mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold">ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।</h4>
+                                <p id="feedback-text" class="text-sm mt-1">আমরা খুব শীঘ্রই আপনার ইমেইলে যোগাযোগ করব।</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ফুটার (Footer) -->
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold flex items-center justify-center text-sm">ন</span>
+                <span class="text-white font-bold text-lg">নবীন ডিজিটাল</span>
+            </div>
+            <p class="text-sm text-center sm:text-left">
+                &copy; ২০২৬ নবীন ডিজিটাল। সর্বস্বত্ব সংরক্ষিত।
+            </p>
+            <div class="flex gap-6 text-sm">
+                <a href="#home" class="hover:text-white transition-colors">হোম</a>
+                <a href="#services" class="hover:text-white transition-colors">সার্ভিস</a>
+                <a href="#contact" class="hover:text-white transition-colors">যোগাযোগ</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ইন্টারঅ্যাক্টিভ জাভাস্ক্রিপ্ট -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ১. ডার্ক ও লাইট মোড টগল লজিক
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlElement = document.documentElement;
+
+            // লোকাল স্টোরেজ বা সিস্টেম প্রেফারেন্স চেক করা
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                    htmlElement.classList.add('dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                }
+            } catch (e) {
+                console.warn('LocalStorage অ্যাক্সেস করা যায়নি:', e);
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                const isDark = htmlElement.classList.contains('dark');
+                
+                if (isDark) {
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
+
+                try {
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                } catch (e) {}
+            });
+
+            // ২. মোবাইল নেভিগেশন মেনু টগল
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // মোবাইল মেনুর কোনো লিংকে ক্লিক করলে মেনু বন্ধ হয়ে যাবে
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // ৩. ইন্টারঅ্যাক্টিভ কন্টাক্ট ফর্ম সাবমিশন হ্যান্ডলার
+            const contactForm = document.getElementById('contact-form');
+            const feedbackBox = document.getElementById('form-feedback');
+            const feedbackText = document.getElementById('feedback-text');
+            const submitBtn = document.getElementById('submit-btn');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const userName = document.getElementById('name').value.trim();
+                const selectedService = document.getElementById('service').value;
+
+                // বাটন লোডিং স্টেট
+                const originalBtnHTML = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>পাঠানো হচ্ছে...</span>';
+
+                setTimeout(() => {
+                    // ফিডব্যাক মেসেজ দেখানো
+                    feedbackText.textContent = `প্রিয় ${userName}, "${selectedService}" বিষয়ে আপনার বার্তাটি আমরা পেয়েছি। খুব শীঘ্রই আমাদের টিম আপনার সাথে যোগাযোগ করবে।`;
+                    feedbackBox.classList.remove('hidden');
+
+                    // ফর্ম রিসেট এবং বাটন স্বাভাবিক করা
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHTML;
+
+                    // ৮ সেকেন্ড পর ফিডব্যাক মেসেজ হাইড করা
+                    setTimeout(() => {
+                        feedbackBox.classList.add('hidden');
+                    }, 8000);
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>
